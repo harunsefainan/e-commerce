@@ -4,9 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 @lombok.Data
-@Table(name = "seller")
-public class SellerEntity {
-
+@Table(name = "data_analyst")
+public class DataAnalystEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -27,13 +26,6 @@ public class SellerEntity {
     @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "storeName")
-    private String storeName;
-
-    @Column(name = "storeDescription")
-    private String storeDescription;
-
     @Column(name = "optime")
     private String optime;
-
 }
