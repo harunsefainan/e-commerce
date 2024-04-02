@@ -22,16 +22,16 @@ public class SellerEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "storeName")
+    @Column(name = "store_name")
     private String storeName;
 
-    @Column(name = "storeDescription")
+    @Column(name = "store_description")
     private String storeDescription;
 
     @Column(name = "role")

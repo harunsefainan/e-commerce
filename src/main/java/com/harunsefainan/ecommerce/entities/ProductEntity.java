@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 @lombok.Data
 @Table(name = "product")
 public class ProductEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -17,14 +18,14 @@ public class ProductEntity {
     @JoinColumn(name = "seller_id")
     private SellerEntity seller;
 
-    @Column(name = "productName")
+    @Column(name = "product_name")
     private String productName;
 
     @Column(name = "category")
     private String category;
 
-    @Column(name = "stockQuantity")
-    private int stockQuantity;
+    @Column(name = "stock")
+    private int stock;
 
     @Column(name = "price")
     private BigDecimal price;
@@ -32,8 +33,8 @@ public class ProductEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "imageUrl")
-    private String imageUrl;
+    @Column(name = "image")
+    private String image;
 
     @Column(name = "optime")
     private String optime;

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @lombok.Data
 @Table(name = "customer")
 public class CustomerEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,10 +22,10 @@ public class CustomerEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "address")

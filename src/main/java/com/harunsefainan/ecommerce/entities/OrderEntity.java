@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @lombok.Data
 @Table(name = "orders")
 public class OrderEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,10 +26,10 @@ public class OrderEntity {
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "totalPrice")
+    @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @Column(name = "orderDate")
+    @Column(name = "order_date")
     private LocalDateTime orderDate;
 
     @Column(name = "optime")

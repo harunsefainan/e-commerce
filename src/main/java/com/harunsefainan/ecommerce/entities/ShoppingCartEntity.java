@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @lombok.Data
 @Table(name = "shopping_cart")
 public class ShoppingCartEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -24,4 +25,5 @@ public class ShoppingCartEntity {
 
     @Column(name = "optime")
     private String optime;
+
 }
