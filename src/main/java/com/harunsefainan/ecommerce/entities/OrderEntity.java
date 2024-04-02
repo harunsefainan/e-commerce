@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @lombok.Data
-@Table(name = "order")
+@Table(name = "orders")
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

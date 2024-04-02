@@ -1,11 +1,13 @@
 package com.harunsefainan.ecommerce.entities;
 
+import com.harunsefainan.ecommerce.enums.UserRole;
 import jakarta.persistence.*;
 
 @Entity
 @lombok.Data
 @Table(name = "admin")
 public class AdminEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -26,6 +28,10 @@ public class AdminEntity {
     @Column(name = "lastName")
     private String lastName;
 
+    @Column(name = "role")
+    private UserRole role;
+
     @Column(name = "optime")
     private String optime;
+
 }

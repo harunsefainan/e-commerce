@@ -1,5 +1,6 @@
 package com.harunsefainan.ecommerce.entities;
 
+import com.harunsefainan.ecommerce.enums.UserRole;
 import jakarta.persistence.*;
 
 @Entity
@@ -32,6 +33,9 @@ public class SellerEntity {
 
     @Column(name = "storeDescription")
     private String storeDescription;
+
+    @Column(name = "role")
+    private UserRole role;
 
     @Column(name = "optime")
     private String optime;

@@ -1,5 +1,6 @@
 package com.harunsefainan.ecommerce.entities;
 
+import com.harunsefainan.ecommerce.enums.UserRole;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,6 +27,10 @@ public class DataAnalystEntity {
     @Column(name = "lastName")
     private String lastName;
 
+    @Column(name = "role")
+    private UserRole role;
+
     @Column(name = "optime")
     private String optime;
+
 }

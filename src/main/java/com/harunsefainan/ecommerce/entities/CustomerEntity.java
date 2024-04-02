@@ -1,5 +1,6 @@
 package com.harunsefainan.ecommerce.entities;
 
+import com.harunsefainan.ecommerce.enums.UserRole;
 import jakarta.persistence.*;
 
 @Entity
@@ -29,6 +30,10 @@ public class CustomerEntity {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "role")
+    private UserRole role;
+
     @Column(name = "optime")
     private String optime;
+
 }
