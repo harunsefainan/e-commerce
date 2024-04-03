@@ -31,6 +31,7 @@ public class CustomerEntity {
     @Column(name = "address")
     private String address;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private UserRole role;
 

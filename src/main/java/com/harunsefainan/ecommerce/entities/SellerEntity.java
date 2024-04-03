@@ -34,6 +34,7 @@ public class SellerEntity {
     @Column(name = "store_description")
     private String storeDescription;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private UserRole role;
 
