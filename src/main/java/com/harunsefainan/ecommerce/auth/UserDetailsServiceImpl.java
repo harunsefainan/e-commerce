@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @lombok.RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     private final UserRepository userRepository;
 
     @Override
