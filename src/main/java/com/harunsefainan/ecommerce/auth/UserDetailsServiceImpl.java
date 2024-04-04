@@ -5,6 +5,7 @@ import com.harunsefainan.ecommerce.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -12,10 +13,12 @@ import org.springframework.stereotype.Service;
  * This class implements the UserDetailsService interface to provide user authentication functionality.
  */
 @Service
-@lombok.RequiredArgsConstructor
+@lombok.AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -25,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         return org.springframework.security.core.userdetails.User
                 .withUsername(username)
-                .password(userEntity.getPassword())
+                .password(bCryptPasswordEncoder.encode(userEntity.getPassword()))
                 .roles(userEntity.getRole().toString()) //If saved as a user role (enum)
                 .build();
     }
