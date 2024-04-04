@@ -1,11 +1,13 @@
 package com.harunsefainan.ecommerce.config;
 
-import com.harunsefainan.ecommerce.auth.JwtRequestFilter;
+import com.harunsefainan.ecommerce.auth.JwtTokenFilter;
 import com.harunsefainan.ecommerce.auth.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
@@ -16,14 +18,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @lombok.AllArgsConstructor
-public class SecurityConfig extends WebSecurityConfiguration {
+public class SecurityConfiguration extends WebSecurityConfiguration {
 
     private UserDetailsServiceImpl userDetailsService;
 
-    private JwtRequestFilter jwtRequestFilter;
+    private JwtTokenFilter jwtTokenFilter;
 
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
+    protected void configure(AuthenticationManagerBuilder builder) throws Exception {
+        builder.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
 
@@ -37,10 +39,10 @@ public class SecurityConfig extends WebSecurityConfiguration {
                 .requestMatchers("/dataanalyst/**").hasRole("DATA_ANALYST")
                 .anyRequest().authenticated();
         http.sessionManagement(Customizer.withDefaults());
-        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
-    @Bean
+
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
