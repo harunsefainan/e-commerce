@@ -47,7 +47,7 @@ public class JwtTokenManager {
     // This method checks if a JWT (JSON Web Token) has expired.
     public boolean isExpired(String token) {
         Claims claims = getClaims(token);
-        return claims.getExpiration().after(new Date(System.currentTimeMillis()));
+        return claims.getExpiration().before(new Date(System.currentTimeMillis()));
     }
 
     // This method parses and verifies a JWT (JSON Web Token) to extract its claims (payload).

@@ -2,34 +2,34 @@ package com.harunsefainan.ecommerce.auth;
 
 import com.harunsefainan.ecommerce.entities.UserEntity;
 import com.harunsefainan.ecommerce.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
-/**
- * This class implements the UserDetailsService interface to provide user authentication functionality.
- */
 @Service
-@lombok.AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepository.findByUsername(username); //Retrieves user information from the database based on the username.
+        /*UserEntity userEntity = userRepository.findByUsername(username);
         if (userEntity == null) {
-            throw new UsernameNotFoundException("User not found with username: " + username); //Checks if the user exists and throws a UsernameNotFoundException if not found.
-        }
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }*/
         return org.springframework.security.core.userdetails.User
-                .withUsername(username)
-                .password(bCryptPasswordEncoder.encode(userEntity.getPassword()))
-                .roles(userEntity.getRole().toString()) //If saved as a user role (enum)
+                .withUsername("harun")
+                .password("harun")
+                .roles("userEntity.getRole().toString()")
                 .build();
     }
 }

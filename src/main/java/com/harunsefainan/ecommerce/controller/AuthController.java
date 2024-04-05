@@ -23,7 +23,7 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<String> authenticate(@RequestBody LoginRequest loginRequest){
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),loginRequest.getPassword()));
             return ResponseEntity.ok(jwtTokenManager.generateToken(loginRequest.getUsername()));
