@@ -36,7 +36,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
         //If there is an Authorization header and it contains the word "Bearer," we extract
         //the token value and assign it to the token variable.
-        if (authHeader != null && authHeader.contains("Bearer")) {
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
             token = authHeader.substring(7);
             try {
                 username = jwtTokenManager.getUsernameToken(token);//We extract the username from the token using the jwtTokenManager.getUsernameToken(token) method.

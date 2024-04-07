@@ -32,7 +32,7 @@ public class JwtTokenManager {
 
     // This method validates a JWT (JSON Web Token) by checking if it has a valid username and is not expired.
     public boolean tokenValidate(String token) {
-        if (getUsernameToken(token) != null && isExpired(token)) {
+        if (getUsernameToken(token) != null && isNotExpired(token)) {
             return true;
         }
         return false;
@@ -45,7 +45,7 @@ public class JwtTokenManager {
     }
 
     // This method checks if a JWT (JSON Web Token) has expired.
-    public boolean isExpired(String token) {
+    public boolean isNotExpired(String token) {
         Claims claims = getClaims(token);
         return claims.getExpiration().before(new Date(System.currentTimeMillis()));
     }
